@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="ColorMaker/ColorMaker.csproj">
+    <Deploy Solution="Debug|*" />
+  </Project>
+</Solution>
