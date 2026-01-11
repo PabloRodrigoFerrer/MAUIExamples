@@ -2,4 +2,7 @@
   <Project Path="ColorMaker/ColorMaker.csproj">
     <Deploy Solution="Debug|*" />
   </Project>
+  <Project Path="PerfectPay/PerfectPay.csproj" Id="0258f77a-8f3b-467b-8069-cdb41bee3b6c">
+    <Deploy Solution="Debug|*" />
+  </Project>
 </Solution>
