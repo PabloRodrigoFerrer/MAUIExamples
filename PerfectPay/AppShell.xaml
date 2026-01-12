@@ -7,7 +7,7 @@
     Title="PerfectPay">
 
     <ShellContent
-        Title="Home"
+        Title="Perfect Pay"
         ContentTemplate="{DataTemplate local:MainPage}"
         Route="MainPage" />
 
