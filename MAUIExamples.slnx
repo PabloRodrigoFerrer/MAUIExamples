@@ -1,4 +1,7 @@
 <Solution>
+  <Project Path="CodeQuotes/CodeQuotes.csproj" Id="d6e409ea-abed-4f0a-b567-a695c155af43">
+    <Deploy Solution="Debug|*" />
+  </Project>
   <Project Path="ColorMaker/ColorMaker.csproj">
     <Deploy Solution="Debug|*" />
   </Project>

@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CodeQuotes.MainPage">
+
+    <Grid x:Name="container" 
+          BackgroundColor="blue">
+        <Grid.Background>
+            <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
+                <GradientStopCollection>
+                    <GradientStop Color="#3820cd" Offset="0" />
+                    <GradientStop Color="#DD2476" Offset="1" />
+                </GradientStopCollection>
+            </LinearGradientBrush>
+        </Grid.Background>
+
+        <Label x:Name="lblQuote"
+            Text="Get a random quote..!!"
+            FontSize="48"
+            FontAttributes="Bold"
+            TextColor="Black"
+            FontFamily="BisonFont"
+            HorizontalOptions="Center"
+            VerticalOptions="Center"/>
+
+        <Button x:Name="btnQuoteGenerator"
+                Text="Get new quote"
+                HorizontalOptions="Fill"
+                VerticalOptions="End"
+                Opacity=".40"
+                Margin="20,0,20,40"
+                BackgroundColor="Black"
+                TextColor="White"
+                BorderWidth="1"
+                BorderColor="AliceBlue"
+                HeightRequest="90"
+                Clicked="btnQuoteGenerator_Clicked"/>
+
+    </Grid>
+
+</ContentPage>

@@ -1,12 +1,10 @@
-﻿namespace ColorMaker
+﻿namespace CodeQuotes
 {
     public partial class AppShell : Shell
     {
-        
         public AppShell()
         {
             InitializeComponent();
-           
         }
     }
 }
