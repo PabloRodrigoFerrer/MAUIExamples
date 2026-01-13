@@ -16,14 +16,18 @@ namespace ColorMaker
         {
             if (!isRandom)
             {
-                var red = sldRed.Value;
-                var blue = sldBlue.Value;
-                var green = sldGreen.Value;
-
-                Color color = Color.FromRgb(red, green, blue);
-
-                setColor(color);
+                setColor(GenerateColorFromSliders());
             }
+        }
+
+        private Color GenerateColorFromSliders()
+        {
+            var red = sldRed.Value;
+            var blue = sldBlue.Value;
+            var green = sldGreen.Value;
+
+            Color color = Color.FromRgb(red, green, blue);
+            return color;
         }
 
         private void setColor(Color color)
@@ -52,11 +56,16 @@ namespace ColorMaker
 
             setColor(color);
 
+            SetSlidersUI(color);
+
+            isRandom = false;
+        }
+
+        private void SetSlidersUI(Color color)
+        {
             sldRed.Value = color.Red;
             sldBlue.Value = color.Blue;
             sldGreen.Value = color.Green;
-
-            isRandom = false;
         }
 
         private async void btnCopy_Clicked(object sender, EventArgs e)
