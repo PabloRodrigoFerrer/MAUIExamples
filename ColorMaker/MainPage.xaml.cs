@@ -9,7 +9,7 @@ namespace ColorMaker
 
         public MainPage()
         {
-            InitializeComponent();
+            InitializeComponent();                
         }
 
         private void Slider_ValueChanged(object sender, ValueChangedEventArgs e)
