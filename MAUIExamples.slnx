@@ -8,6 +8,9 @@
   <Project Path="HangManGame/HangManGame.csproj" Id="4f098107-239a-4228-88d4-299e3024182d">
     <Deploy Solution="Debug|*" />
   </Project>
+  <Project Path="ImcCalculator/ImcCalculator.csproj" Id="e5f4ef4e-bf80-4153-975b-bb683f269401">
+    <Deploy Solution="Debug|*" />
+  </Project>
   <Project Path="PerfectPay/PerfectPay.csproj" Id="0258f77a-8f3b-467b-8069-cdb41bee3b6c">
     <Deploy Solution="Debug|*" />
   </Project>

@@ -17,7 +17,7 @@
                 <Label Text="{Binding SpotLight}"
                FontSize="32"
                HorizontalOptions="Center"/>
-
+                
                 <Label Text="{Binding GameOver}"
                    FontSize="24"
                    HorizontalOptions="Center"
