@@ -1,4 +1,5 @@
-﻿using PropertyChanged;
+﻿
+using PropertyChanged;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -11,14 +12,15 @@ namespace ImcCalculator.Models
     {
         public float Height { get; set; }
 
-        public float Weigth { get; set; }
+        public float Weight { get; set; }
 
-        public double Result => Math.Round(Weigth / (Height * Height / 10000),2);
+        [DependsOn(nameof(Height), nameof(Weight))]
+        public double Result => Math.Round(Weight / (Height * Height / 10000),2);
 
         public string State => Result switch
         {
             < 16 => "Delgadez severa(extrema)",
-            < 16.99  => "Degadez moderada",
+            < 16.99  => "Delgadez moderada",
             < 18.49 => "Delgadez aceptable",
             < 24.9 => "Peso normal",
             <29.9 => "Sobrepeso(Pre-obesidad)",
@@ -27,6 +29,8 @@ namespace ImcCalculator.Models
             _ => "Obesidad grado III(Mórbida)"
            
         };
+
+        public string LblResult => $"IMC: {Result}";
 
     }
 }

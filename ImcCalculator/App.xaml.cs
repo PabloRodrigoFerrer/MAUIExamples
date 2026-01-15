@@ -1,4 +1,5 @@
-﻿using ImcCalculator.Views;
+﻿using ImcCalculator.ViewModels;
+using ImcCalculator.Views;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace ImcCalculator

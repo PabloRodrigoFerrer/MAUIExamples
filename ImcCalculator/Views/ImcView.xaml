@@ -2,54 +2,232 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ImcCalculator.Views.ImcView"
+             xmlns:gauge="clr-namespace:Syncfusion.Maui.Gauges;assembly=Syncfusion.Maui.Gauges"
              Title="ImcPage">
 
     <ScrollView>
-        <VerticalStackLayout Margin="10,100,10,0" Spacing="20">
 
+        <ScrollView.Background>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                <GradientStopCollection>
+                    <GradientStop Color="#52b69a" Offset="0.0" />
+                    <GradientStop Color="#34a0a4" Offset="0.5" />
+                    <GradientStop Color="#52b69a" Offset="1" />
+                </GradientStopCollection>
+            </LinearGradientBrush>
+        </ScrollView.Background>
+
+        <VerticalStackLayout Margin="10,100,10,0" Spacing="20">
+            
+            
             <!--#region Height -->
-            <Border StrokeThickness="2">
-                <VerticalStackLayout>
+            <Border StrokeThickness="2"
+                    Padding="5"
+                    Background="White"
+                    >
+
+
+                <VerticalStackLayout Spacing="5">
                     <Label Text="Altura (cm)"
+                        Margin="0,5"
                        FontSize="Large"
                        FontAttributes="Bold"
+                       TextColor="Gray"
                        HorizontalTextAlignment="Center"/>
 
-                    <Slider Minimum="0"
-                        Maximum="250"
-                        Value="{Binding ImcModel.Height}"/>
+                    <gauge:SfLinearGauge HeightRequest="100"
+                                            Minimum="0"
+                                            Maximum="230"
+                                            Interval="30"
+                                            ShowTicks="True"
+                                            ShowLabels="True"
+                                            HorizontalOptions="Center">
 
+                        <gauge:SfLinearGauge.MarkerPointers>
+                            <gauge:LinearContentPointer x:Name="PointerHeight" Value="{Binding ImcModel.Height}" Position="Cross" IsInteractive="True">
+                                <gauge:LinearContentPointer.Content>
+                                    <Grid HeightRequest="25" WidthRequest="40">
+                                        <RoundRectangle CornerRadius="5" 
+                                                Fill="#ff0074E3"/>
+                                        <Label Text="{Binding Source= {x:Reference PointerHeight}, Path=Value, StringFormat='{0:0}'}"
+                                               HorizontalOptions="Center"
+                                               VerticalOptions="Center" 
+                                               TextColor="White"/>
+                                    </Grid>
+                                </gauge:LinearContentPointer.Content>
+                            </gauge:LinearContentPointer>
+                        </gauge:SfLinearGauge.MarkerPointers>
+
+                    </gauge:SfLinearGauge>
 
                 </VerticalStackLayout>
             </Border>
             <!--#endregion-->
 
             <!--#region WEIGHT -->
-            <Border StrokeThickness="2">
-                <VerticalStackLayout>
+            <Border StrokeThickness="2"  
+                    Padding="5"
+                    Background="White">
+                <VerticalStackLayout Spacing="5">
                     <Label Text="Peso (Kg)"
+                           Margin="0,5"
                            FontSize="Large"
+                           TextColor="Gray"
                            FontAttributes="Bold"
                            HorizontalTextAlignment="Center"/>
 
-                    <Slider Minimum="0"
-                            Maximum="200"
-                            Value="{Binding ImcModel.Weigth}"/>
+                    <gauge:SfLinearGauge HeightRequest="100"
+                        Minimum="0"
+                        Maximum="230"
+                        Interval="30"
+                        ShowTicks="True"
+                        ShowLabels="True"
+                        HorizontalOptions="Center">
 
+                        <gauge:SfLinearGauge.MarkerPointers>
+                            <gauge:LinearContentPointer x:Name="PointerWeight" Value="{Binding ImcModel.Weight}" Position="Cross" IsInteractive="True">
+                                <gauge:LinearContentPointer.Content>
+                                    <Grid HeightRequest="25" WidthRequest="40">
+                                        <RoundRectangle CornerRadius="5" 
+                                                        Fill="#ff0074E3"/>
+                                        <Label Text="{Binding Source= {x:Reference PointerWeight}, Path=Value, StringFormat='{0:0}'}"
+                                                       HorizontalOptions="Center"
+                                                       VerticalOptions="Center" 
+                                                       TextColor="White"/>
+                                    </Grid>
+                                </gauge:LinearContentPointer.Content>
+                            </gauge:LinearContentPointer>
+                        </gauge:SfLinearGauge.MarkerPointers>
+
+                    </gauge:SfLinearGauge>
 
                 </VerticalStackLayout>
             </Border>
             <!--#endregion-->
 
             <!--#region RESULT -->
-            <Label Text="{Binding ImcModel.State}"
-                   HorizontalOptions="Center"
-                   FontSize="Small"
-                   />
 
-            <Label Text="{Binding ImcModel.Result}"
-                   HorizontalOptions="Center"
-                   FontSize="Medium"/>
+            <Border StrokeThickness="2"
+                    BackgroundColor="white"
+                    Padding="5">
+
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="10"/>
+                </Border.StrokeShape>
+
+                <VerticalStackLayout Spacing="5">
+
+                    <Label Text="{Binding ImcModel.State}"
+                           HorizontalOptions="Center"
+                           FontSize="Title"/>
+
+                    <Label x:Name="lblImcResult"
+                           Text="{Binding ImcModel.LblResult}"
+                           HorizontalOptions="Center"
+                           FontSize="Large"/>
+
+                    <gauge:SfRadialGauge >
+                        <gauge:SfRadialGauge.Axes>
+                            <gauge:RadialAxis ShowLabels="False"
+                              ShowAxisLine="False"
+                              ShowTicks="False"
+                              Minimum="0"
+                              Maximum="50"
+                              
+                              BackgroundColor="white">
+
+                                <gauge:RadialAxis.Ranges>
+                                    <gauge:RadialRange StartValue="0"
+                                  EndValue="16"
+                                  
+                                  WidthUnit="Factor"
+                                  StartWidth="0.65"
+                                  EndWidth="0.65"
+                                  
+                                  Fill="#277da1" />
+                                    <gauge:RadialRange StartValue="16"
+                                  EndValue="16.99"
+                               
+                                  WidthUnit="Factor"
+                                  StartWidth="0.65"
+                                  EndWidth="0.65"
+      
+                                  Fill="#577590" />
+                                    <gauge:RadialRange StartValue="16.99"
+                                  EndValue="18.49"
+                                 
+                                  WidthUnit="Factor"
+                                  StartWidth="0.65"
+                                  EndWidth="0.65"
+                            
+                                  Fill="#4d908e" />
+                                    <gauge:RadialRange StartValue="18.49"
+                                  EndValue="24.9"
+                                 
+                                  WidthUnit="Factor"
+                                  StartWidth="0.65"
+                                  EndWidth="0.65"
+                           
+                                  Fill="#90be6d" />
+                                    <gauge:RadialRange StartValue="24.9"
+                                                      EndValue="29.9"
+                                 
+                                                      WidthUnit="Factor"
+                                                      StartWidth="0.65"
+                                                      EndWidth="0.65"
+                           
+                                                      Fill="#f9c74f" />
+
+
+                                    <gauge:RadialRange StartValue="29.9"
+                                       EndValue="34.9"
+                                  
+                                       WidthUnit="Factor"
+                                       StartWidth="0.65"
+                                       EndWidth="0.65"
+
+                                       Fill="#f9844a" />
+                                    <gauge:RadialRange StartValue="34.9"
+                                       EndValue="39.9"
+                                  
+                                       WidthUnit="Factor"
+                                       StartWidth="0.65"
+                                       EndWidth="0.65"
+
+                                       Fill="#f3722c" />
+
+                                    <gauge:RadialRange StartValue="39.9"
+                                       EndValue="50"
+                                       WidthUnit="Factor"
+                                       StartWidth="0.65"
+                                       EndWidth="0.65"
+                                       Fill="#f94144" />
+
+                                    <gauge:RadialRange 
+                                           StartValue="0"
+                                           EndValue="99"
+                                           OffsetUnit="Factor"
+                                           RangeOffset="0.63"
+                                           WidthUnit="Factor"
+                                           StartWidth="0.15"
+                                           EndWidth="0.15"
+                                           Fill="#4D9b9b9b" />
+
+                                </gauge:RadialAxis.Ranges>
+
+                                <gauge:RadialAxis.Pointers>
+                                    <gauge:NeedlePointer Value="{Binding ImcModel.Result}"
+                                     NeedleLength="0.6"
+                                     NeedleStartWidth="2"
+                                     NeedleEndWidth="15"
+                                     KnobRadius="15"
+                                     KnobSizeUnit="Pixel" />
+                                </gauge:RadialAxis.Pointers>
+                            </gauge:RadialAxis>
+                        </gauge:SfRadialGauge.Axes>
+                    </gauge:SfRadialGauge>
+                </VerticalStackLayout>
+            </Border>
             <!--#endregion-->
 
         </VerticalStackLayout>
